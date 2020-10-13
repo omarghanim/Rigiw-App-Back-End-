@@ -1,0 +1,107 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Business {
+  id: String!
+  userId: ID!
+  user: User
+  mainCategory: String
+  subCategory: String
+  img: String!
+  businessName: String
+  aboutBusiness: String
+  customerGender: String
+  businessPhoneNum: String
+  webSite: String
+  socialMedia: String
+}
+
+type Profile {
+  id: ID!
+  userId: ID!
+  bio: String
+  gender: String
+  birthdate: DateTime
+  city: String
+  currentWeight: String
+  height: String
+  howActiveIam: String
+  myGoal: String
+  myGoalWeight: String
+  user: User
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type User {
+  id: ID!
+  firstname: String!
+  lastname: String!
+  email: String!
+  tel: String
+  password: String!
+  profile: Profile
+  businessProfile: Business
+  token: String
+}
+
+type Query {
+  findUser(id: String!): User!
+  findAllUsers: [User!]!
+  findProfile(id: String!): Profile!
+  findAllProfiles: [Profile!]!
+  findBusiness(id: String!): Business!
+  findAll: [Business!]!
+}
+
+type Mutation {
+  createUser(newUser: NewUser!): User!
+  login(loginUser: LoginUser!): User!
+  addProfile(addProfile: AddProfile!): Profile!
+  editProfile(editProfile: AddProfile!, id: String!): Profile!
+  createBusiness(businessProfile: BusinessProfile!): Business!
+}
+
+input NewUser {
+  email: String!
+  password: String!
+  firstname: String!
+  lastname: String!
+  tel: String
+}
+
+input LoginUser {
+  email: String!
+  password: String!
+  token: String
+}
+
+input AddProfile {
+  userId: ID!
+  bio: String
+  gender: String
+  birthdate: DateTime
+  city: String
+  currentWeight: String
+  height: String
+  howActiveIam: String
+  myGoal: String
+  myGoalWeight: String
+}
+
+input BusinessProfile {
+  userId: ID!
+  mainCategory: String
+  subCategory: String
+  img: String!
+  businessName: String
+  aboutBusiness: String
+  customerGender: String
+  businessPhoneNum: String
+  webSite: String
+  socialMedia: String
+}
